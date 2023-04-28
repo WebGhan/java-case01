@@ -48,4 +48,9 @@ public class EmpServiceImpl implements EmpService {
         return pageBean;
     }
 
+    @Override
+    public void delete(List<Integer> ids) {
+        empMapper.delete(ids);
+    }
+
 }

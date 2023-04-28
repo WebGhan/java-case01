@@ -4,13 +4,13 @@ import com.gaohan.case01.pojo.PageBean;
 import com.gaohan.case01.pojo.Result;
 import com.gaohan.case01.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * 员工管理 Controller
@@ -24,6 +24,7 @@ public class EmpController<T> {
 
     /**
      * 按分页查询员工数据
+     *
      * @param page
      * @param pageSize
      * @return
@@ -41,5 +42,20 @@ public class EmpController<T> {
         PageBean pageBean = empService.page2(page, pageSize, name, gender, begin, end);
         return Result.success(pageBean);
     }
+
+    /**
+     * 批量删除员工
+     * @param ids
+     * @return
+     */
+    @DeleteMapping("/emps/{ids}")
+    public Result delete(@PathVariable List<Integer> ids) {
+        log.info("批量删除：{}", ids);
+
+        // empService.delete(ids);
+        return Result.success();
+    }
+
+    ;
 
 }

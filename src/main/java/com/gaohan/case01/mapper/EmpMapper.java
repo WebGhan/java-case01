@@ -33,6 +33,11 @@ public interface EmpMapper {
      * 采用 pagehepler 方式
      * @return
      */
-    @Select("select * from emp")
     public List<Emp> page2(String name, Short gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 批量删除员工
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }
