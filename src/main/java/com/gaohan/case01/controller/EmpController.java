@@ -52,10 +52,9 @@ public class EmpController<T> {
     public Result delete(@PathVariable List<Integer> ids) {
         log.info("批量删除：{}", ids);
 
-        // empService.delete(ids);
+        // 调用 service
+        empService.delete(ids);
         return Result.success();
     }
-
-    ;
 
 }
