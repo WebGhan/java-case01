@@ -1,8 +1,51 @@
 package com.gaohan.case01.service.impl;
 
+import com.gaohan.case01.mapper.EmpMapper;
+import com.gaohan.case01.pojo.Emp;
+import com.gaohan.case01.pojo.PageBean;
 import com.gaohan.case01.service.EmpService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class EmpServiceImpl implements EmpService {
+
+    @Autowired
+    private EmpMapper empMapper;
+
+    @Override
+    public PageBean page(Integer page, Integer pageSize) {
+        // 获取总记录数
+        Long count = empMapper.count();
+
+        // 根据分页查询数据
+        Integer start = (page - 1) * pageSize;
+        List<Emp> empList = empMapper.page(start, pageSize);
+
+        // 封装PageBean对象
+        PageBean pageBean = new PageBean(count, empList);
+
+        return pageBean;
+    }
+
+    @Override
+    public PageBean page2(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end) {
+        // 设置分页参数
+        PageHelper.startPage(page, pageSize);
+
+        // 执行查询
+        List<Emp> empList = empMapper.page2(name, gender, begin, end);
+        Page<Emp> p = (Page<Emp>) empList;
+
+        // 封装PageBean对象
+        PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
+
+        return pageBean;
+    }
+
 }

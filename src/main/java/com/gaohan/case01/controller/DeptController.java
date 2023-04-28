@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-// @RequestMapping("/depts")
+// @RequestMapping("/api")
 public class DeptController {
 
     // private static Logger log = LoggerFactory.getLogger(DeptController.class);
