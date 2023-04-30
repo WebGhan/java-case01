@@ -1,10 +1,10 @@
 package com.gaohan.case01.controller;
 
+import com.gaohan.case01.pojo.Emp;
 import com.gaohan.case01.pojo.PageBean;
 import com.gaohan.case01.pojo.Result;
 import com.gaohan.case01.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -56,5 +56,45 @@ public class EmpController<T> {
         empService.delete(ids);
         return Result.success();
     }
+
+    /**
+     * 新增员工
+     * @param emp
+     * @return
+     */
+    @PostMapping("/emps")
+    public Result save(@RequestBody Emp emp) {
+        log.info("新增员工，emp：{}", emp);
+
+        empService.save(emp);
+        return Result.success();
+    }
+
+    /**
+     * 更新员工
+     * @param emp
+     * @return
+     */
+    @PutMapping("/emps")
+    public Result update(@RequestBody Emp emp) {
+        log.info("更新员工信息，emp：{}", emp);
+
+        empService.update(emp);
+        return Result.success();
+    }
+
+    /**
+     * 根据ID查询员工
+     * @param id
+     * @return
+     */
+    @GetMapping("/emps/{id}")
+    public Result getById(@PathVariable Integer id) {
+        log.info("根据ID查询员工:{}", id);
+
+        Emp emp = empService.getById(id);
+        return Result.success(emp);
+    }
+
 
 }

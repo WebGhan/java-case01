@@ -1,7 +1,7 @@
 package com.gaohan.case01.service;
 
+import com.gaohan.case01.pojo.Emp;
 import com.gaohan.case01.pojo.PageBean;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +20,7 @@ public interface EmpService {
     PageBean page(Integer page, Integer pageSize);
 
     /**
-     * 采用 pagehepler 方式
+     * 采用 pagehepler 方式分页
      */
     PageBean page2(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end);
 
@@ -29,4 +29,24 @@ public interface EmpService {
      * @param ids
      */
     void delete(List<Integer> ids);
+
+
+    /**
+     * 新增员工
+     * @param emp
+     */
+    void save(Emp emp);
+
+    /**
+     * 更新员工
+     * @param emp
+     */
+    void update(Emp emp);
+
+    /**
+     * 根据ID查询员工
+     * @param id
+     * @return
+     */
+    Emp getById(Integer id);
 }
