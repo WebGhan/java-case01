@@ -2,6 +2,7 @@ package com.gaohan.case01.utils;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,12 +17,16 @@ import java.util.UUID;
 public class AliOSSUtils {
 
     // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
-    String endpoint = "https://oss-cn-chengdu.aliyuncs.com";
+    @Value("${aliyun.oss.endpoint}")
+    String endpoint;
     // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
-    String accessKeyId = "LTAI5tBaunHSRHX8chvQ4wjJ";
-    String accessKeySecret = "KMKKVojHdLPYFStFtKgR7daUoo33tH";
+    @Value("${aliyun.oss.accessKeyId}")
+    String accessKeyId;
+    @Value("${aliyun.oss.accessKeySecret}")
+    String accessKeySecret;
     // 填写Bucket名称，例如examplebucket。
-    String bucketName = "java-case";
+    @Value("${aliyun.oss.bucketName}")
+    String bucketName;
 
     /**
      * 上传图片到 OSS

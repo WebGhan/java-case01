@@ -96,5 +96,4 @@ public class EmpController<T> {
         return Result.success(emp);
     }
 
-
 }
