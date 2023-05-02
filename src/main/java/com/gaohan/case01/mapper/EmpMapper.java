@@ -47,8 +47,8 @@ public interface EmpMapper {
      * 新增员工
      * @param emp
      */
-    @Insert("insert into emp (username, name, gender, entrydate, create_time, update_time)" +
-            " values (#{username}, #{name}, #{gender}, #{entrydate}, #{createTime}, #{updateTime})")
+    @Insert("insert into emp (username, name, gender, image, entrydate, create_time, update_time)" +
+            " values (#{username}, #{name}, #{gender}, #{image}, #{entrydate}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
 
     /**
@@ -56,7 +56,7 @@ public interface EmpMapper {
      * @param emp
      */
     @Update("update emp" +
-            " set username = #{username}, name = #{name}, gender = #{gender}, entrydate = #{entrydate}, update_time = #{updateTime}" +
+            " set username = #{username}, name = #{name}, gender = #{gender}, image = #{image}, entrydate = #{entrydate}, update_time = #{updateTime}" +
             " where id = #{id}")
     void update(Emp emp);
 
