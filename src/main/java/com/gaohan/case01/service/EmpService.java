@@ -49,4 +49,11 @@ public interface EmpService {
      * @return
      */
     Emp getById(Integer id);
+
+    /**
+     * 登录
+     * @param emp
+     * @return
+     */
+    Emp login(Emp emp);
 }

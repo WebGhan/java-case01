@@ -73,4 +73,10 @@ public class EmpServiceImpl implements EmpService {
         return emp;
     }
 
+    @Override
+    public Emp login(Emp emp) {
+        Emp e = empMapper.getByUsernameAndPassword(emp);
+        return e;
+    }
+
 }
