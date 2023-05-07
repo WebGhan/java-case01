@@ -10,7 +10,7 @@ import java.util.Map;
 public class JwtUtils {
 
     private static String signKey = "gaohan";
-    private static Long expire = 10000L;
+    private static Long expire = 3600000L;
 
     /**
      * 生成JWT令牌
