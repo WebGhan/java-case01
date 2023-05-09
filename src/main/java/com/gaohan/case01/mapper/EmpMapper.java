@@ -1,10 +1,7 @@
 package com.gaohan.case01.mapper;
 
 import com.gaohan.case01.pojo.Emp;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -47,8 +44,8 @@ public interface EmpMapper {
      * 新增员工
      * @param emp
      */
-    @Insert("insert into emp (username, name, gender, image, entrydate, create_time, update_time)" +
-            " values (#{username}, #{name}, #{gender}, #{image}, #{entrydate}, #{createTime}, #{updateTime})")
+    @Insert("insert into emp (username, name, gender, image, entrydate, dept_id, create_time, update_time)" +
+            " values (#{username}, #{name}, #{gender}, #{image}, #{entrydate}, #{deptId}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
 
     /**
@@ -56,7 +53,7 @@ public interface EmpMapper {
      * @param emp
      */
     @Update("update emp" +
-            " set username = #{username}, name = #{name}, gender = #{gender}, image = #{image}, entrydate = #{entrydate}, update_time = #{updateTime}" +
+            " set username = #{username}, name = #{name}, gender = #{gender}, image = #{image}, entrydate = #{entrydate}, dept_id = #{deptId}, update_time = #{updateTime}" +
             " where id = #{id}")
     void update(Emp emp);
 
@@ -75,4 +72,11 @@ public interface EmpMapper {
      */
     @Select("select * from emp where username = #{username} and password = #{password}")
     Emp getByUsernameAndPassword(Emp emp);
+
+    /**
+     * 员工解绑部门
+     * @param deptId
+     */
+    @Update("update emp set dept_id = null where dept_id = #{deptId}")
+    void unbindByDeptId(Integer deptId);
 }

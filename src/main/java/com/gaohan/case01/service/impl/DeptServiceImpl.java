@@ -1,10 +1,12 @@
 package com.gaohan.case01.service.impl;
 
 import com.gaohan.case01.mapper.DeptMapper;
+import com.gaohan.case01.mapper.EmpMapper;
 import com.gaohan.case01.pojo.Dept;
 import com.gaohan.case01.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,15 +16,25 @@ public class DeptServiceImpl implements DeptService {
 
     @Autowired
     private DeptMapper deptMapper;
+    @Autowired
+    private EmpMapper empMapper;
 
     @Override
     public List<Dept> list() {
         return deptMapper.list();
     }
 
+    @Transactional(rollbackFor = Exception.class) // spring 事物管理
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws Exception {
         deptMapper.deleteById(id);
+
+        int i = 1 / 0;
+        // if (true) {
+        //     throw new Exception("出错了！");
+        // }
+
+        empMapper.unbindByDeptId(id); // 根据部门ID解绑员工
     }
 
     @Override

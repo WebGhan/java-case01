@@ -53,7 +53,7 @@ public class DeptController {
      * 删除部门
      */
     @DeleteMapping("/depts/{id}")
-    public Result delete(@PathVariable Integer id) {
+    public Result delete(@PathVariable Integer id) throws Exception {
         log.info("根据ID删除部门:{}", id);
 
         // 调用service删除部门数据

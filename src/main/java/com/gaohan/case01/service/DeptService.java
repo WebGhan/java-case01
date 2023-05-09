@@ -18,7 +18,7 @@ public interface DeptService {
      * 删除部门
      * @param id 用于删除部门的ID
      */
-    void delete(Integer id);
+    void delete(Integer id) throws Exception;
 
     /**
      * 新增部门
