@@ -1,5 +1,6 @@
 package com.gaohan.case01.service.impl;
 
+import com.gaohan.case01.aop.MyLog;
 import com.gaohan.case01.mapper.DeptMapper;
 import com.gaohan.case01.mapper.EmpMapper;
 import com.gaohan.case01.pojo.Dept;
@@ -24,6 +25,7 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptLogService deptLogService;
 
+    @MyLog
     @Override
     public List<Dept> list() {
         return deptMapper.list();
@@ -35,7 +37,7 @@ public class DeptServiceImpl implements DeptService {
         try {
             deptMapper.deleteById(id);
 
-            int i = 1 / 0;
+            // int i = 1 / 0;
             // if (true) {
             //     throw new Exception("出错了！");
             // }
@@ -60,6 +62,7 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public Dept getById(Integer id) {
+        int i = 1/0;
         return deptMapper.getById(id);
     }
 

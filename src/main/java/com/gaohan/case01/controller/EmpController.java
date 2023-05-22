@@ -1,5 +1,6 @@
 package com.gaohan.case01.controller;
 
+import com.gaohan.case01.anno.Log;
 import com.gaohan.case01.pojo.Emp;
 import com.gaohan.case01.pojo.PageBean;
 import com.gaohan.case01.pojo.Result;
@@ -48,6 +49,7 @@ public class EmpController<T> {
      * @param ids
      * @return
      */
+    @Log
     @DeleteMapping("/emps/{ids}")
     public Result delete(@PathVariable List<Integer> ids) {
         log.info("批量删除：{}", ids);
@@ -62,6 +64,7 @@ public class EmpController<T> {
      * @param emp
      * @return
      */
+    @Log
     @PostMapping("/emps")
     public Result save(@RequestBody Emp emp) {
         log.info("新增员工，emp：{}", emp);
@@ -75,6 +78,7 @@ public class EmpController<T> {
      * @param emp
      * @return
      */
+    @Log
     @PutMapping("/emps")
     public Result update(@RequestBody Emp emp) {
         log.info("更新员工信息，emp：{}", emp);

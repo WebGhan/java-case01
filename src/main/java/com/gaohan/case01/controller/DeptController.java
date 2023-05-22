@@ -1,5 +1,6 @@
 package com.gaohan.case01.controller;
 
+import com.gaohan.case01.anno.Log;
 import com.gaohan.case01.pojo.Dept;
 import com.gaohan.case01.pojo.Result;
 import com.gaohan.case01.service.DeptService;
@@ -52,6 +53,7 @@ public class DeptController {
     /**
      * 删除部门
      */
+    @Log
     @DeleteMapping("/depts/{id}")
     public Result delete(@PathVariable Integer id) throws Exception {
         log.info("根据ID删除部门:{}", id);
@@ -64,6 +66,7 @@ public class DeptController {
     /**
      * 新增部门
      */
+    @Log
     @PostMapping("/depts")
     public Result add(@RequestBody Dept dept) {
         log.info("新增部门:{}", dept);
@@ -76,6 +79,7 @@ public class DeptController {
     /**
      * 修改部门
      */
+    @Log
     @PutMapping("/depts")
     public Result update(@RequestBody Dept dept) {
         log.info("修改部门:{}", dept);
